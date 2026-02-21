@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://brfmstj7spxfq"]
+
+[ext_resource type="Script" uid="uid://ckq4skvvwxdt5" path="res://script/slime.gd" id="1_2hd65"]
+[ext_resource type="Texture2D" uid="uid://cn5il20hd7dwv" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_15vis"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrqju"]
+atlas = ExtResource("1_15vis")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyhst"]
+atlas = ExtResource("1_15vis")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbi0b"]
+atlas = ExtResource("1_15vis")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siike"]
+atlas = ExtResource("1_15vis")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hd65"]
+atlas = ExtResource("1_15vis")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcugo"]
+atlas = ExtResource("1_15vis")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a61f"]
+atlas = ExtResource("1_15vis")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjhlw"]
+atlas = ExtResource("1_15vis")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rrqju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrqju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyhst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbi0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siike")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hd65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcugo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1a61f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjhlw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyhst"]
+size = Vector2(6, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hd65"]
+
+[node name="Slime" type="CharacterBody2D" unique_id=203931878]
+script = ExtResource("1_2hd65")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1829642008]
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_rrqju")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1676068301]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_wyhst")
+
+[node name="DamageZone" type="Area2D" parent="." unique_id=621782643]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone" unique_id=815029146]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_2hd65")
