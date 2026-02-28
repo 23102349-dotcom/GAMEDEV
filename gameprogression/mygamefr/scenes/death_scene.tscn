@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://b8b2or8ifucdd"]
+
+[ext_resource type="Script" uid="uid://b10micuraojdn" path="res://script/death_scene.gd" id="1_o2qfb"]
+[ext_resource type="Shader" uid="uid://x37r3lny2vs0" path="res://script/death_scene.gdshader" id="2_dkhfj"]
+[ext_resource type="Texture2D" uid="uid://bl0gspht2fes1" path="res://assets/Pixel UI pack 3/03.png" id="2_vcjmr"]
+[ext_resource type="Texture2D" uid="uid://cddaerbtn3rt2" path="res://assets/png/block_numbers_gb_01.png" id="4_dkhfj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mr0a8"]
+shader = ExtResource("2_dkhfj")
+shader_parameter/time_offset = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkhfj"]
+atlas = ExtResource("2_vcjmr")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr0a8"]
+atlas = ExtResource("2_vcjmr")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f78ek"]
+atlas = ExtResource("2_vcjmr")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufsib"]
+atlas = ExtResource("2_vcjmr")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skiwu"]
+atlas = ExtResource("2_vcjmr")
+region = Rect2(192, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_taitq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkhfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr0a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f78ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufsib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skiwu")
+}],
+"loop": true,
+"name": &"loading",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taitq"]
+atlas = ExtResource("4_dkhfj")
+region = Rect2(0, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4vw8"]
+atlas = ExtResource("4_dkhfj")
+region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq6rb"]
+atlas = ExtResource("4_dkhfj")
+region = Rect2(16, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25cbj"]
+atlas = ExtResource("4_dkhfj")
+region = Rect2(24, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77ulb"]
+atlas = ExtResource("4_dkhfj")
+region = Rect2(32, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4knbb"]
+atlas = ExtResource("4_dkhfj")
+region = Rect2(40, 0, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcjmr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taitq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4vw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq6rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25cbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77ulb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4knbb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="death_scene" type="CanvasLayer" unique_id=944206268]
+script = ExtResource("1_o2qfb")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1341822985]
+material = SubResource("ShaderMaterial_mr0a8")
+use_parent_material = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=40267589]
+position = Vector2(606, 287)
+scale = Vector2(3.6875, 3.3541665)
+sprite_frames = SubResource("SpriteFrames_taitq")
+animation = &"loading"
+frame_progress = 0.13850167
+flip_h = true
+flip_v = true
+
+[node name="Timer" type="Timer" parent="." unique_id=780525975]
+one_shot = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=437854670]
+position = Vector2(605.00006, 155)
+scale = Vector2(5.312498, 4.03125)
+sprite_frames = SubResource("SpriteFrames_vcjmr")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0

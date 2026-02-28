@@ -5,6 +5,7 @@ const MAX_HP = 10
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damage_zone: Area2D = $DamageZone
+@onready var hurt_sound = $Hurtsound
 
 const COIN_SCENE = preload("res://scenes/coin.tscn")
 
@@ -12,6 +13,7 @@ var direction: int = 1
 var is_hurt: bool = false
 var hp: int = MAX_HP
 var spawner = null
+var damage_cooldown: bool = false
 
 func _ready():
 	sprite.animation_finished.connect(_on_animation_finished)
@@ -19,10 +21,17 @@ func _ready():
 	set_collision_mask_value(1, true)
 	set_collision_mask_value(2, false)
 	damage_zone.body_entered.connect(_on_damage_zone_entered)
+	damage_zone.set_collision_mask_value(1, true)
+	damage_zone.set_collision_mask_value(2, true)
 
 func _on_damage_zone_entered(body):
+	if damage_cooldown:
+		return
 	if body.is_in_group("player"):
+		damage_cooldown = true
 		body.take_damage(10)
+		await get_tree().create_timer(1.0).timeout
+		damage_cooldown = false
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -50,6 +59,7 @@ func take_damage(amount: int):
 		queue_free()
 		return
 	is_hurt = true
+	hurt_sound.play()
 	sprite.play("hurt")
 
 func drop_coin():
@@ -60,3 +70,4 @@ func drop_coin():
 func _on_animation_finished():
 	if sprite.animation == "hurt":
 		is_hurt = false
+		sprite.play("idle")

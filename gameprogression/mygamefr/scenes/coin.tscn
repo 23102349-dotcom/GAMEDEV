@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxcoamcmt5yga"]
+[gd_scene format=3 uid="uid://dxcoamcmt5yga"]
 
 [ext_resource type="Script" uid="uid://bscxnv15k7cqh" path="res://script/coin.gd" id="1_i64fm"]
 [ext_resource type="Texture2D" uid="uid://jkda0wegnx7k" path="res://assets/brackeys_platformer_assets/sprites/coin.png" id="1_rwqht"]
+[ext_resource type="AudioStream" uid="uid://cvsrt68d1xxrb" path="res://assets/brackeys_platformer_assets/sounds/coin.wav" id="3_11l1o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwqht"]
 atlas = ExtResource("1_rwqht")
@@ -91,14 +92,17 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwqht"]
 radius = 3.1622777
 
-[node name="coin" type="Area2D"]
+[node name="coin" type="Area2D" unique_id=1746495642]
 script = ExtResource("1_i64fm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=479013097]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_7cc30")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1953768186]
 position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_rwqht")
+
+[node name="Picksound" type="AudioStreamPlayer2D" parent="." unique_id=1729405154 groups=["picksound"]]
+stream = ExtResource("3_11l1o")

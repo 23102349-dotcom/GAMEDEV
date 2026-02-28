@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dc1pal1pkapx" path="res://assets/FlyingForestEnemies_FREE/Enemy3/Enemy3-Movement-In-Animation/Enemy3-Fly.png" id="4_2avx2"]
 [ext_resource type="Texture2D" uid="uid://cmfe25ntclyty" path="res://assets/FlyingForestEnemies_FREE/Enemy3/Enemy3-Movement-In-Animation/Enemy3-Hit.png" id="5_5f346"]
 [ext_resource type="Texture2D" uid="uid://cnsnbqnxscbrn" path="res://assets/FlyingForestEnemies_FREE/Enemy3/Enemy3-Movement-In-Animation/Enemy3-Idle.png" id="6_0onds"]
+[ext_resource type="AudioStream" uid="uid://couwsnv4gkmrs" path="res://assets/brackeys_platformer_assets/sounds/explosion.wav" id="8_qsl3t"]
+[ext_resource type="AudioStream" uid="uid://d2ykmteft1nru" path="res://assets/brackeys_platformer_assets/sounds/hurt.wav" id="9_2avx2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfs1x"]
 atlas = ExtResource("1_wqpjq")
@@ -460,3 +462,12 @@ shape = SubResource("CircleShape2D_ecxjq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=340424633]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_2cdgk")
+
+[node name="Deathsound" type="AudioStreamPlayer2D" parent="." unique_id=1419912594]
+stream = ExtResource("8_qsl3t")
+
+[node name="Hurtsound" type="AudioStreamPlayer2D" parent="." unique_id=1139112346]
+stream = ExtResource("9_2avx2")
+
+[node name="Attacksound" type="AudioStreamPlayer2D" parent="." unique_id=22723943]
+stream = ExtResource("8_qsl3t")

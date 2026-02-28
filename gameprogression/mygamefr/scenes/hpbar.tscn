@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://cnkpit2vco1t2"]
+
+[ext_resource type="Script" uid="uid://bk26hlfaxffms" path="res://script/hpbar.gd" id="1_ypbfl"]
+[ext_resource type="Texture2D" uid="uid://dfk2qqg66ilf1" path="res://assets/Pixel UI pack 3/05.png" id="2_hwv8k"]
+[ext_resource type="Texture2D" uid="uid://cdkwcl3wavt5o" path="res://assets/MediavelFree.png" id="3_hwv8k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vofhf"]
+atlas = ExtResource("2_hwv8k")
+region = Rect2(48, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oqgx"]
+atlas = ExtResource("2_hwv8k")
+region = Rect2(0, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2vh8"]
+atlas = ExtResource("2_hwv8k")
+region = Rect2(96, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8elu"]
+atlas = ExtResource("2_hwv8k")
+region = Rect2(240, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y4lc"]
+atlas = ExtResource("2_hwv8k")
+region = Rect2(192, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7so80"]
+atlas = ExtResource("2_hwv8k")
+region = Rect2(144, 16, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0k3xs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vofhf")
+}],
+"loop": true,
+"name": &"fourbar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7oqgx")
+}],
+"loop": false,
+"name": &"fullbar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2vh8")
+}],
+"loop": true,
+"name": &"midbar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8elu")
+}],
+"loop": true,
+"name": &"nobar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2y4lc")
+}],
+"loop": true,
+"name": &"onebar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7so80")
+}],
+"loop": true,
+"name": &"twobar",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k3xs"]
+atlas = ExtResource("3_hwv8k")
+region = Rect2(129, 50, 14, 13)
+
+[node name="Hpbar" type="CanvasLayer" unique_id=1684699099]
+script = ExtResource("1_ypbfl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=721542432]
+position = Vector2(233, 48.25)
+scale = Vector2(3.375, 3.8437502)
+sprite_frames = SubResource("SpriteFrames_0k3xs")
+animation = &"midbar"
+
+[node name="CoinLabel" type="Label" parent="." unique_id=1562363196]
+offset_left = 210.0
+offset_top = 65.0
+offset_right = 250.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 30
+
+[node name="CoinIcon" type="TextureRect" parent="." unique_id=36912312]
+offset_left = 161.0
+offset_top = 67.0
+offset_right = 201.0
+offset_bottom = 107.0
+texture = SubResource("AtlasTexture_0k3xs")

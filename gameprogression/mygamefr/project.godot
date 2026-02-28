@@ -18,6 +18,15 @@ config/name="mygamefr"
 run/main_scene="uid://5segx1k7hql8"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="uid://be2kdgdlxlphr"
+
+[autoload]
+
+Music="*uid://7epxy314wbm"
+Global="*uid://c2c7fc7fifpum"
+
 [input]
 
 ui_left={
