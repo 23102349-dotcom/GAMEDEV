@@ -21,7 +21,7 @@
 ### Progress Screenshot 1
 ![Week 2 Saturday 1](https://raw.githubusercontent.com/23102349-dotcom/GAMEDEV/main/gameprogression/screenshot/week2-sat.png)
 
-### 🖼 Progress Screenshot 2
+### Progress Screenshot 2
 ![Week 2 Saturday 2](https://raw.githubusercontent.com/23102349-dotcom/GAMEDEV/main/gameprogression/screenshot/week2-sat%232.png)
 
 ---
