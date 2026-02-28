@@ -34,8 +34,7 @@
 ### UI Update
 ![Week 3 UI](https://raw.githubusercontent.com/23102349-dotcom/GAMEDEV/main/gameprogression/screenshot/week3-ui.png)
 
-[Additional UI Notes](https://chatgpt.com/c/69a2fcc3-25c8-8324-a339-611a4e2181aa)
-
+![Week 3 UI](https://github.com/23102349-dotcom/GAMEDEV/blob/main/gameprogression/screenshot/week3-ui2.png)
 ---
 
 ## Development Notes
