@@ -57,7 +57,7 @@
 ![Multiplayer 2](https://github.com/23102349-dotcom/GAMEDEV/blob/main/pictures/multiplayerpic.png)
 
 ### Demo Video
-[![Watch Demo Video](https://raw.githubusercontent.com/23102349-dotcom/GAMEDEV/main/pictures/demothumb.png)](https://github.com/23102349-dotcom/GAMEDEV/blob/main/pictures/demovideo.mp4)
+[▶ Watch Demo Video](https://github.com/23102349-dotcom/GAMEDEV/blob/main/pictures/demovideo.mp4)
 
 ---
 
