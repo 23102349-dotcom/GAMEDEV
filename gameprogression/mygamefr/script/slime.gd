@@ -27,7 +27,7 @@ func _ready():
 func _on_damage_zone_entered(body):
 	if damage_cooldown:
 		return
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and body.has_method("take_damage"):
 		damage_cooldown = true
 		body.take_damage(10)
 		await get_tree().create_timer(1.0).timeout

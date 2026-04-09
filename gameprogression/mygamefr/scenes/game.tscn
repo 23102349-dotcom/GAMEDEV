@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://5segx1k7hql8"]
 
+[ext_resource type="Script" uid="uid://bi7anaxnqe7lk" path="res://scenes/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://buwykq1im17s6" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://by0cfvqda6yip" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://brfmstj7spxfq" path="res://scenes/Slime.tscn" id="3_lnu2h"]
@@ -188,6 +189,7 @@ size = Vector2(17, 370)
 
 [node name="Game" type="Node2D" unique_id=1684766403]
 position = Vector2(-3, -1)
+script = ExtResource("1_gee14")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1412065939]
 tile_set = SubResource("TileSet_lnu2h")

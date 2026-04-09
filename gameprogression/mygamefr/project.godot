@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="mygamefr"
-run/main_scene="uid://5segx1k7hql8"
+run/main_scene="uid://qqxlbujmccwb"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [audio]
@@ -26,6 +26,12 @@ buses/default_bus_layout="uid://be2kdgdlxlphr"
 
 Music="*uid://7epxy314wbm"
 Global="*uid://c2c7fc7fifpum"
+Nakama="*uid://ywxbh21k7vg7"
+NakamaManager="*uid://bdxew8b4wo1g6"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/com.heroiclabs.nakama/plugin.cfg")
 
 [input]
 

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://qqxlbujmccwb"]
+
+[ext_resource type="Script" uid="uid://cp0tyegpl2ogi" path="res://script/lobby.gd" id="1_o1atq"]
+
+[node name="Lobby" type="Node2D" unique_id=1754039007]
+script = ExtResource("1_o1atq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=951430341]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=675125814]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StatusLabel" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=130285725]
+layout_mode = 2
+text = "STATUS LABEL"
+
+[node name="CreateMatch" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1061905890]
+layout_mode = 2
+text = "CREATE MATCH"
+
+[node name="JoinMatch" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1656470375]
+layout_mode = 2
+text = "JOIN MATCH"
+
+[node name="MatchIDInput" type="LineEdit" parent="CanvasLayer/VBoxContainer" unique_id=945521165]
+layout_mode = 2

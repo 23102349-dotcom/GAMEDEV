@@ -14,9 +14,9 @@ const MAX_HP = 100
 
 var death_screen = preload("res://scenes/death_scene.tscn")
 var hpbar_scene = preload("res://scenes/hpbar.tscn")
-var characterpic_scene = preload("res://scenes/characterpic.tscn")  # 👈 added
+var characterpic_scene = preload("res://scenes/characterpic.tscn")
 var hpbar = null
-var characterpic = null  # 👈 added
+var characterpic = null
 
 var spawn_position: Vector2
 var hp: int = MAX_HP
@@ -31,6 +31,9 @@ var coins: int = 0
 var current_damage: int = 0
 var already_hit: Array = []
 
+# Nakama sync rate limiter
+var sync_timer: float = 0.0
+const SYNC_RATE: float = 0.05  # send 20 times per second
 
 func _ready():
 	spawn_position = global_position
@@ -39,8 +42,7 @@ func _ready():
 	hitbox_left.set_deferred("monitoring", false)
 	hitbox_right.body_entered.connect(_on_hit)
 	hitbox_left.body_entered.connect(_on_hit)
-	
-	# 👇 only create if they don't already exist
+
 	if not get_tree().root.has_node("hpbar"):
 		hpbar = hpbar_scene.instantiate()
 		hpbar.name = "hpbar"
@@ -58,7 +60,7 @@ func _ready():
 	await get_tree().process_frame
 	hpbar.update_hp(hp, MAX_HP)
 	hpbar.update_coins(Global.coins)
-	sprite.play("revive")  # 👈 play revive on start too
+	sprite.play("revive")
 	characterpic.update_portrait("revive")
 
 func _on_hit(body):
@@ -109,11 +111,18 @@ func _physics_process(delta: float) -> void:
 	if not is_attacking and not is_hurt:
 		if direction != 0:
 			sprite.play("run")
-			characterpic.update_portrait("run", sprite.flip_h)   # 👈 pass flip
+			characterpic.update_portrait("run", sprite.flip_h)
 		else:
 			sprite.play("idle")
-			characterpic.update_portrait("idle", sprite.flip_h)  # 👈 pass flip
+			characterpic.update_portrait("idle", sprite.flip_h)
 	move_and_slide()
+
+	# Send position to Nakama at a fixed rate
+	sync_timer += delta
+	if sync_timer >= SYNC_RATE:
+		sync_timer = 0.0
+		if NakamaManager.socket != null and NakamaManager.match_id != "":
+			NakamaManager.send_player_state(global_position, sprite.flip_h, sprite.animation)
 
 func start_attack(heavy: bool):
 	is_attacking = true
@@ -125,16 +134,16 @@ func start_attack(heavy: bool):
 	if heavy:
 		current_damage = HEAVY_ATTACK_DAMAGE
 		sprite.play("attack2")
-		characterpic.update_portrait("attack2", sprite.flip_h)  # 👈 pass flip_h
+		characterpic.update_portrait("attack2", sprite.flip_h)
 	else:
 		current_damage = ATTACK_DAMAGE
 		combo_step += 1
 		sprite.play("attack1")
-		characterpic.update_portrait("attack1", sprite.flip_h)  # 👈 pass flip_h
+		characterpic.update_portrait("attack1", sprite.flip_h)
 	get_hitbox().set_deferred("monitoring", true)
 
 func _on_animation_finished():
-	if sprite.animation == "revive":  # 👈 after revive plays go to idle
+	if sprite.animation == "revive":
 		sprite.play("idle")
 		characterpic.update_portrait("idle")
 		return
@@ -144,7 +153,7 @@ func _on_animation_finished():
 	if sprite.animation == "hurt":
 		is_hurt = false
 		sprite.play("idle")
-		characterpic.update_portrait("idle")  # 👈 added
+		characterpic.update_portrait("idle")
 		return
 	if sprite.animation != "attack1" and sprite.animation != "attack2":
 		return
@@ -158,7 +167,7 @@ func _on_animation_finished():
 	else:
 		combo_step = 0
 		sprite.play("idle")
-		characterpic.update_portrait("idle")  # 👈 added
+		characterpic.update_portrait("idle")
 
 func _show_death_overlay():
 	var overlay = death_screen.instantiate()
@@ -179,14 +188,11 @@ func take_damage(amount: int):
 		return
 	is_hurt = true
 	sprite.play("hurt")
-	characterpic.update_portrait("hurt", sprite.flip_h)  # 👈 pass flip_h
+	characterpic.update_portrait("hurt", sprite.flip_h)
 
 func respawn():
-	# reset position first
 	global_position = spawn_position
 	velocity = Vector2.ZERO
-	
-	# reset stats
 	hp = MAX_HP
 	hpbar.update_hp(hp, MAX_HP)
 	hpbar.update_coins(Global.coins)
@@ -197,18 +203,14 @@ func respawn():
 	already_hit.clear()
 	hitbox_right.set_deferred("monitoring", false)
 	hitbox_left.set_deferred("monitoring", false)
-	
-	# play revive BEFORE setting is_dead to false
 	sprite.play("revive")
 	characterpic.update_portrait("revive")
-	
-	# wait for revive animation to finish THEN allow movement
 	await sprite.animation_finished
-	is_dead = false  # 👈 only unlocks movement after animation done
+	is_dead = false
 	sprite.play("idle")
 	characterpic.update_portrait("idle")
 
 func collect_coin():
 	Global.coins += 1
-	hpbar.update_coins(Global.coins)  # 👈 use Global
+	hpbar.update_coins(Global.coins)
 	print("Coins: ", Global.coins)
