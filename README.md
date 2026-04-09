@@ -35,6 +35,27 @@
 ![Week 3 UI](https://raw.githubusercontent.com/23102349-dotcom/GAMEDEV/main/gameprogression/screenshot/week3-ui.png)
 
 ![Week 3 UI](https://github.com/23102349-dotcom/GAMEDEV/blob/main/gameprogression/screenshot/week3-ui2.png)
+
+---
+
+## Week 4 - 3D Implementation
+
+### 3D Screenshot 1  
+![3D 1](https://raw.githubusercontent.com/23102349-dotcom/GAMEDEV/main/3dpic1.png)
+
+### 3D Screenshot 2  
+![3D 2](https://raw.githubusercontent.com/23102349-dotcom/GAMEDEV/main/3dpic2.png)
+
+---
+
+## Week 5 - Multiplayer
+
+### Multiplayer Screenshot 1  
+![Multiplayer 1](https://raw.githubusercontent.com/23102349-dotcom/GAMEDEV/main/multiplayerpic.jfif)
+
+### Multiplayer Screenshot 2  
+![Multiplayer 2](https://raw.githubusercontent.com/23102349-dotcom/GAMEDEV/main/multipic2.jfif)
+
 ---
 
 ## Development Notes
@@ -42,3 +63,5 @@
 - Improved UI and visuals
 - Continued gameplay progression updates
 - Added enemy sprites and updated UI for Week 3
+- Integrated 3D models and environments for Week 4
+- Developed multiplayer functionalities and tested networking for Week 5
